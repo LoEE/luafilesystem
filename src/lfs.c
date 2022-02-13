@@ -876,7 +876,8 @@ static const struct luaL_Reg fslib[] = {
 int luaopen_lfs (lua_State *L) {
 	dir_create_meta (L);
 	lock_create_meta (L);
-	luaL_register (L, "lfs", fslib);
+	lua_newtable (L);
+	luaL_register (L, NULL, fslib);
 	set_info (L);
 	return 1;
 }
